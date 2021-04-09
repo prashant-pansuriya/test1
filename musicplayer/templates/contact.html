@@ -1,0 +1,61 @@
+<!-- template inheritance -->
+{% extends "home.html" %}
+<!-- title -->
+{%  block title %}
+Contact
+{% load static %}
+{% endblock %}
+<!-- end title -->
+
+<!-- block content -->
+{% block content %}
+<div class="container">
+    <br>
+    <!-- contact us form -->
+    <div class="col-sm-8" style="margin:auto">
+        <div class="card">
+            <div class="card-header">
+                <center>Contact Us</center>
+            </div>
+
+            <div class="card-body">
+                <!-- form with post request -->
+                <form method="post">
+                <!-- csrf token -->
+                    {% csrf_token %}
+                    <!-- django form render -->
+                    <div class="form-group">
+                        <label>Full Name<span style="color:red;">*</span></label>
+                        {{form.full_name}}
+                        {% if form.errors.full_name %}
+                        <span class="help-block" style="color:red;">{{form.errors.full_name}}</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email address<span style="color:red;">*</span></label>
+                        {{form.email}}
+                        {% if form.errors.email %}
+                        <span class="help-block" style="color:red;">{{form.errors.email}}</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message<span style="color:red;">*</span></label>
+                        {{form.message}}
+                        {% if form.errors.message %}
+                        <span class="help-block" style="color:red;">{{form.errors.message}}</span>
+                        {% endif %}
+                    </div>
+                    <center>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!-- end content -->
+
+

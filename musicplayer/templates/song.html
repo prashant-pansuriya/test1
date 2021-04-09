@@ -1,0 +1,41 @@
+<!-- template inheritance -->
+{% extends "home.html" %}
+<!-- title -->
+{%  block title %}
+Movie-All-Song
+{% load static %}
+{% endblock %}
+<!-- end title -->
+
+<!-- start content tag-->
+{% block content %}
+<div class="container">
+    <br>
+    <!-- song card -->
+    <h2 style="color:green;text-align:center;">{{name}}-Song</h2>
+    <div class="row">
+        <!-- dynamicallly  data parse using django orm -->
+        {% for s in song %}
+        <div class="col-3">
+            <div class="card cover-img" style="border:blue solid 2px;border-radius: 10px;">
+
+                <img class="card-img-top" src="{{s.song_img.url}}" alt="Card image">
+
+                <div class="card-body">
+                    <!-- dispaly value -->
+                    <p class="card-title">{{s.name}}</p>
+                    <p class="card-text">{{s.singer}}</p>
+                    <a href="{% url 'song-play' s.id %}" class="btn btn-primary">Play</a>
+                </div>
+
+            </div>
+            <br>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    </div>
+{% endblock %}
+<!-- end content tag -->
+

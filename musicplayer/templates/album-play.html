@@ -1,0 +1,42 @@
+<!-- template inheritance -->
+{% extends "home.html" %}
+
+<!-- title tag -->
+{%  block title %}
+Contact Us
+{% load static %}
+{% endblock %}
+<!-- end title -->
+
+<!-- block content -->
+{% block content %}
+<div class="container">
+    <br>
+    <!-- card  -->
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{song.song_img.url}}" alt="Card image">
+                </div>
+                <!-- card data -->
+                <div class="col-md-8">
+                    <h3>{{song.name}}</h3>
+                    <p>Release Year: {{song.album_id.year}}</p>
+                    <p>Album : {{song.album_id}}</p>
+                      <!-- audio tag -->
+                        <audio class="audio-play" controls="" autoplay>
+                            <source src="{{song.song_file.url}}" type="audio/mpeg">
+                        </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- end card -->
+    <br>
+</div>
+{% endblock %}
+<!-- end content -->
+
+

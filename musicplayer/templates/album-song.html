@@ -1,0 +1,39 @@
+<!-- template inheritance -->
+{% extends "home.html" %}
+<!-- title -->
+{%  block title %}
+Movie-All-Song
+{% load static %}
+{% endblock %}
+<!-- end title -->
+
+<!-- block content -->
+{% block content %}
+<div class="container">
+    <br>
+    <h2 style="color:green;text-align:center;">{{name}}-Song</h2>
+    <!-- card -->
+    <div class="row">
+        {% for s in song %}
+        <div class="col-3">
+            <div class="card cover-img" style="border:blue solid 2px;border-radius: 10px;">
+
+                <img class="card-img-top" src="{{s.song_img.url}}" alt="Card image">
+                 <!-- card meta data -->
+                <div class="card-body">
+                    <p class="card-title">{{s.name}}</p>
+                    <p class="card-text">{{s.singer}}</p>
+                    <a href="{% url 'album-song' s.id %}" class="btn btn-primary">Play</a>
+                </div>
+
+            </div>
+            <br>
+        </div>
+        {% endfor %}
+        <!-- end card -->
+    </div>
+    </div>
+{% endblock %}
+<!-- end content -->
+
+

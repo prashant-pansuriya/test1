@@ -1,0 +1,220 @@
+<!-- static tag load -->
+{% load static %}
+
+<!-- start html tag -->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<!-- static head  -->
+<head>
+    <!-- Add title -->
+    <title>{% block title%}MVT{% endblock%}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- add external file -->
+    <!-- static tag use -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</head>
+<!-- end head -->
+
+<!-- start body -->
+<body>
+
+<!-- nav bar start -->
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <!-- menu define -->
+    <a class="navbar-brand" href="#">Music Player</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'Studnet-detail' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'movie-song-list' %}">MovieSong</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'album' %}">AlbumSong</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'mvt' %}">Model-Info</a>
+            </li>
+        </ul>
+        <!-- search form  using django template tag -->
+        {% block form %}
+
+        {% endblock %}
+        <!-- end search form -->
+    </div>
+    <!-- menu end -->
+</nav>
+<!-- end nav -->
+
+<!-- template tag -->
+{% block content %}
+<!-- define internal css -->
+<style>
+        .custom {
+           border-radius : 15px;
+           border-color: yellowgreen;
+        }
+
+
+</style>
+<!-- end internal css -->
+
+<!-- start container -->
+<div class="container">
+    <br>
+
+
+
+
+
+
+    <h2><center>MVT</center></h2>
+
+    <!-- django story  -->
+    <div class="row" style="width:100%;">
+
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 style="color:red;text-align:center;text-decoration:underline;">Django is a free , open source ,
+                        web application development framework written in Python.</h5>
+                    <h5 style="color:green;">Following are the tools provided by Django that help our web application
+                        building easier and rapid:</h5>
+                    <ul style="font-weight: bold;">
+                        <li> ORM : For handling database related code</li>
+                        <li>HTML Templating : For generating dynamic HTML</li>
+                        <li>Form Handling : For accepting user inputs</li>
+                        <li>Url Routing : For transferring request to correct web page</li>
+                        <li>User Management : For handling user login/authentication</li>
+                    </ul>
+                    <h5 style="color:green;">Django Principle</h5>
+                    <ul style="font-weight: bold;">
+                        <li> Be More Productive With Less Code</li>
+                        <li>Write Good And Clean Code.</li>
+                    </ul>
+                    <h5 style="color:green;">Django Architecture</h5>
+                    <ul style="font-weight: bold;">
+                        <li> The MVT (Model-View-Template)architecture used by Django is inspired by the famous MVC
+                            (Model-View-Controller) architecture used for developing software applications.
+                        </li>
+                    </ul>
+                    <h5 style="color:green;">Understanding MVC</h5>
+                    <ul style="font-weight: bold;">
+                        <li> The Model is the logical data structure behind the entire application and is represented by
+                            a database(generally relational databases such as MySql, Oracle, Sqlite etc).
+                        </li>
+                        <li> The View is the user interface — what you see in your browser when you visit a website.
+                            These are represented by HTML/CSS/Javascript files.
+                        </li>
+                        <li> The Controller is the middleman that connects the View and Model together, meaning that it
+                            is the one passing data from the Model to the View.
+                        </li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="{% static 'img/mvc.png' %}" class="img-thumbnail" alt="Cinque Terre">
+                        </div>
+                        <div class="col-6">
+                            <ul style="font-weight: bold;">
+                                <li>Web browser or client sends the request to the web server, asking the server to
+                                    display books related to Python.
+                                </li>
+                                <li> The request received by the server is passed to the controller of the application.
+                                </li>
+                                <li> The controller then asks the model to fetch all the Python books from the
+                                    database..
+                                </li>
+                                <li> The model then sends the Python book details to the controller.
+                                </li>
+                                <li> The controller then passes these book details to the view.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br>
+                    <h5 style="color:green;">Understanding MVT</h5>
+                    <ul style="font-weight: bold;">
+                        <li> Model - Data access layer.
+                            <ul>
+                                <li>This deals with access, validation and relationships among data. Models are Python
+                                    classes that mediate between Django ORM and the database tables
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Template - Presentation layer
+                            <ul>
+                                <li>This deals with how data is displayed to the client.</li>
+                            </ul>
+                        </li>
+                        <li>View - Business logic layer.
+                            <ul style="font-weight: bold;">
+                                <li>This is a bridge between models and templates.</li>
+                                <li>A view always accesses model data and redirects it to a template for presentation.
+                                </li>
+                                <li>Unlike the definition of a view in traditional MVC architecture, a Django view
+                                    describes which data you see, not how you see it. It's about processing, not
+                                    presentation.
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="{% static 'img/mvt.png' %}" class="img-thumbnail" alt="Cinque Terre">
+                        </div>
+                        <div class="col-6">
+                            <ul style="font-weight: bold;">
+                                <li>URLs: It is called the URL mapper and is used to redirect HTTP requests to the
+                                    appropriate view , based on the request URL.
+                                </li>
+                                <li>  A view is the request handler function, which receives an HTTP requests and
+                                    returns HTTP responses. Views can access the data ,needed to satisfy the requests ,
+                                    via models, and delegate the formatting of the response to templates.
+                                </li>
+                                <li>Models: Models are Python objects that provide the mechanisms to manage (add,
+                                    modify, delete and query ) the records in the database. Django’s model makes use of
+                                    a very powerful ORM layer which simplifies dealing with the database and accelerates
+                                    the development process. 
+                                </li>
+                                <li>
+                                    Templates: A template is a text file defining the layout of the page (such as an
+                                    HTML page), with placeholders used to represent actual content. A view can
+                                    dynamically create an HTML page using an HTML template, populating it with data it
+                                    pulled from model.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end django story -->
+
+</div>
+</div>
+<!-- end container -->
+{% endblock %}
+<!-- end template-tag -->
+</body>
+<!-- end body -->
+</html>
+<!-- end html tag -->

@@ -1,0 +1,51 @@
+<!-- template inheritance -->
+{% extends "home.html" %}
+
+<!-- title tag -->
+{%  block title %}
+Movie-Song
+{% load static %}
+{% endblock %}
+<!-- end title -->
+
+<!-- search form -->
+{% block form %}
+<form class="form-inline my-2 my-lg-0" method="post">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="s">
+    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+</form>
+{% endblock %}
+<!-- end form tag -->
+
+<!-- start content tag -->
+{% block content %}
+<div class="container">
+    <br>
+    <!-- header -->
+    <div>
+        <h2 style="color:green;text-align:center;" class="margin-bottom:20px;">Movie Name</h2>
+    </div>
+
+    <!-- movie card  -->
+    <div class="row">
+        <!-- dynamically card create -->
+        {% for m in movie %}
+        <div class="col-sm-4">
+            <div class="card cover-img" style="border:blue solid 2px;border-radius: 10px;">
+                <img class="card-img-top" src="{{m.movie_img.url}}" alt="Card image">
+                <div class="card-body">
+                    <h4 class="card-title">{{m.movie_name}}</h4>
+                    <p class="card-text">{{m.movie_type}}</p>
+                    <a href="{% url 'song' m.id %}" class="btn btn-primary">See All Song</a>
+                </div>
+            </div>
+            <br>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- end card -->
+</div>
+{% endblock %}
+<!-- end content -->
+

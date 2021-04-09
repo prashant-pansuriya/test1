@@ -1,0 +1,41 @@
+<!-- template inheritance -->
+{% extends "home.html" %}
+
+<!-- title  -->
+{%  block title %}
+Movie-All-Song
+{% load static %}
+{% endblock %}
+<!-- end title -->
+
+<!-- content -->
+{% block content %}
+<div class="container">
+    <br>
+    <!-- song audio player -->
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <!-- song image card -->
+                <div class="col-md-4">
+                    <img src="{{song.song_img.url}}" alt="Card image">
+                </div>
+                <!-- song meta data -->
+                <div class="col-md-8">
+                    <h3>{{song.name}}</h3>
+                    <p>Release Year : {{song.movie_id.year}}</p>
+                    <p>Movie : {{song.movie_id}}</p>
+                    <!-- audio tag -->
+                        <audio class="audio-play" controls="" autoplay>
+                            <source src="{{song.song_file.url}}" type="audio/mpeg">
+                        </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+</div>
+{% endblock %}
+
+<!-- end content -->
